@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build:client": "esbuild client/src/index.tsx --bundle --outfile=build/app.js",
-    "build:express": "esbuild server/src/server.tsx --bundle --outfile=build/server.js --platform=node",
+    "build:express": "esbuild server/src/express-server.tsx --bundle --outfile=build/express-server.js --platform=node",
     "build:koa": "esbuild server/src/koa-server.tsx --bundle --outfile=build/koa-server.js --platform=node",
-    "start:express": "node build/server.js",
+    "start:express": "node build/express-server.js",
     "start:koa": "node build/koa-server.js",
     "express": "npm run build:client && npm run build:express && npm run start:express",
     "koa": "npm run build:client && npm run build:koa && npm run start:koa"
