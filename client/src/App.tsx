@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, startTransition } from 'react';
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -11,7 +11,7 @@ export function App() {
   const [clientMessage, setClientMessage] = useState('');
 
   useEffect(() => {
-    setClientMessage('Client message');
+    startTransition(() => setClientMessage('Client message'));
   });
 
   return (
