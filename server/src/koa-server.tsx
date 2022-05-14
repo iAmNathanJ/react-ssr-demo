@@ -12,9 +12,8 @@ const router = new Router();
 router.get('/', (ctx: Context) => {
   let didError = false;
   return new Promise((resolve, reject) => {
-    const stream = ReactDOMServer.renderToPipeableStream(<div id="root"><App /></div>,
+    const stream = ReactDOMServer.renderToPipeableStream(<Html><App /></Html>,
       {
-        bootstrapScripts: ["app.js"],
         onShellReady() {
           ctx.status = didError ? 500 : 200;
           ctx.set('Content-type', 'text/html');
@@ -33,6 +32,20 @@ router.get('/', (ctx: Context) => {
       });
   })
 });
+
+function Html({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+    <head>
+      <title>Document</title>
+    </head>
+    <body>
+      <div id="root">{children}</div>
+      <script type="module" src="/index.js"></script>
+    </body>
+    </html>
+  );
+}
 
 app
   .use(router.routes())
