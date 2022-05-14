@@ -2,12 +2,12 @@ import React, { useEffect, useState, startTransition } from 'react';
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-const SlowMessage = React.lazy(async () => {
-  await sleep(3000);
-  return import('./Message')
-});
-
 export function App() {
+  const SlowMessage = React.lazy(async () => {
+    await sleep(3000);
+    return import('./Message')
+  });
+
   const [clientMessage, setClientMessage] = useState('');
 
   useEffect(() => {
