@@ -12,6 +12,8 @@
     "express": "npm run build:client && npm run build:express && npm run start:express",
     "koa": "npm run build:client && npm run build:koa && npm run start:koa",
     "dev": "node build",
+    "postinstall": "docker-compose run --rm node sh -c 'yarn --ignore-scripts'",
+    "docker": "docker-compose up --remove-orphans"
   },
   "keywords": [],
   "author": "",
